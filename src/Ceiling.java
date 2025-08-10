@@ -11,7 +11,6 @@ public class Ceiling {
                 System.out.println("Ceiling is: " + ans);
             }
         }
-
         static int ceiling(int[] arr, int target) {
             // If target is greater than the largest number
             if (target > arr[arr.length - 1]) {
@@ -33,7 +32,7 @@ public class Ceiling {
                 }
             }
             // When loop ends, start is pointing to the smallest number greater than target
-            return arr[start];
+            return start;
         }
     }
 
