@@ -5,17 +5,13 @@ public class Ceiling {
             int target = 15;
 
             int ans = ceiling(arr, target);
-            if (ans == -1) {
-                System.out.println("Ceiling not found");
-            } else {
-                System.out.println("Ceiling is: " + ans);
-            }
+            System.out.println(ans);
+          // return the index of smalled no >=target
         }
         static int ceiling(int[] arr, int target) {
             // If target is greater than the largest number
-            if (target > arr[arr.length - 1]) {
-                return -1;
-            }
+
+
 
             int start = 0;
             int end = arr.length - 1;

@@ -1,6 +1,6 @@
 public class BinarySearch {
     public static void main(String[] args) {
-        int[] arr = {-1, -5, -6, -8, 0, 2, 4, 6, 7, 8, 35};
+        int[] arr = {-34,-33,-32,-21 , 0, 2, 4, 6, 7, 8, 35};
         int target = 0;
         int ans = Binarysearch(arr,target);
             System.out.println(ans);
