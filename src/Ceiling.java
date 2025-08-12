@@ -10,7 +10,10 @@ public class Ceiling {
         }
         static int ceiling(int[] arr, int target) {
             // If target is greater than the largest number
-
+            // But what if the target is the greatest number in the array
+            if(target > arr[arr.length - 1]){
+                return -1;
+            }
 
 
             int start = 0;
