@@ -1,45 +1,44 @@
-public class Firstandlast{
+public class Firstandlast {
     public static void main(String[] args) {
-        int[] nums = {5, 7, 7, 8, 8, 10};
-        int target = 8;
+        int[] nums = {1, 2, 7, 7,9,7, 7, 8, 8, 9, 24, 56};
+        int target = 7;
 
-        int[] result = searchRange(nums, target);
-        System.out.println("[" + result[0] + ", " + result[1] + "]");
+        int[] ans = searchRange(nums, target);
+        System.out.println("First Position: " + ans[0]);
+        System.out.println("Last Position: " + ans[1]);
     }
 
+    // Main method to search range
     public static int[] searchRange(int[] nums, int target) {
-        int first = findFirst(nums, target);
-        int last = findLast(nums, target);
-        return new int[]{first, last};
-    }
-
-    private static int findFirst(int[] nums, int target) {
-        int start = 0, end = nums.length - 1, ans = -1;
-        while (start <= end) {
-            int mid = start + (end - start) / 2;
-            if (nums[mid] == target) {
-                ans = mid;
-                end = mid - 1;
-            } else if (nums[mid] < target) {
-                start = mid + 1;
-            } else {
-                end = mid - 1;
-            }
-        }
+        int[] ans = {-1, -1};
+        // Search for first occurrence
+        ans[0] = search(nums, target, true);
+        // Search for last occurrence
+        ans[1] = search(nums, target, false);
         return ans;
     }
 
- static int findLast(int[] nums, int target) {
-        int start = 0, end = nums.length - 1, ans = -1;
+    // Binary Search Helper Method
+    public static int search(int[] nums, int target, boolean findStartIndex) {
+        int ans = -1;
+        int start = 0;
+        int end = nums.length - 1;
+
         while (start <= end) {
             int mid = start + (end - start) / 2;
-            if (nums[mid] == target) {
-                ans = mid;       // possible answer
-                start = mid + 1; // move right to find later occurrence
-            } else if (nums[mid] < target) {
+
+            if (target < nums[mid]) {
+                end = mid - 1;
+            } else if (target > nums[mid]) {
                 start = mid + 1;
             } else {
-                end = mid - 1;
+                // Potential answer found
+                ans = mid;
+                if (findStartIndex) {
+                    end = mid - 1; // Look on left side for first occurrence
+                } else {
+                    start = mid + 1; // Look on right side for last occurrence
+                }
             }
         }
         return ans;
