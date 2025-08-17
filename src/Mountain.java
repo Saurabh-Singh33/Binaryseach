@@ -14,6 +14,8 @@ public class Mountain {
             if(arr[mid] > arr[mid + 1]){
                 // You are in decreasing part of array ,it may be the ans
                 //this is why end !=mid-1;
+
+                start = end ;
             }else {
                 // you are in asc part of array
                 start = mid +1;// we know that mid +1 element > mid element
