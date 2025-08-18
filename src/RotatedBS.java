@@ -42,7 +42,7 @@ public class RotatedBS {
         }
         return -1;
     }
-
+// it will not work for duplicate value
     static int findPivot(int[] arr) {
         int start = 0;
         int end = arr.length - 1;
