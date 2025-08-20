@@ -7,56 +7,61 @@ public class SearchInMountain {
         System.out.println("Target found at index: " + ans);
     }
 
-    // Main function
-    public static int findInMountainArray(int target, int[] arr) {
-        int peak = findPeak(arr);
-
-        // 1. Search in ascending part
-        int firstTry = binarySearch(arr, target, 0, peak, true);
-        if (firstTry != -1) return firstTry;
-
-        // 2. Otherwise search in descending part
-        return binarySearch(arr, target, peak + 1, arr.length - 1, false);
+    // Main function to search in mountain array
+    static int findInMountainArray(int target, int[] arr) {
+        int peak = peakInMountainArray(arr);
+        int firstTry = orderAgnosticBS(arr, target, 0, peak);
+        if (firstTry != -1) {
+            return firstTry;
+        }
+        // try to search in second half
+        return orderAgnosticBS(arr, target, peak + 1, arr.length - 1);
     }
 
-    // Find peak index
-    public static int findPeak(int[] arr) {
+    // Find peak in mountain array
+    static int peakInMountainArray(int[] arr) {
         int start = 0;
         int end = arr.length - 1;
 
         while (start < end) {
             int mid = start + (end - start) / 2;
-
             if (arr[mid] > arr[mid + 1]) {
-                end = mid; // descending
+                // you are in descending part
+                end = mid;
             } else {
-                start = mid + 1; // ascending
+                // you are in ascending part
+                start = mid + 1;
             }
         }
-        return start; // or end (both same here)
+        // at the end start == end == peak
+        return start;
     }
 
-    // Binary search (works for both asc & desc)
-    public static int binarySearch(int[] arr, int target, int start, int end, boolean asc) {
+    // Order agnostic binary search
+    static int orderAgnosticBS(int[] arr, int target, int start, int end) {
+        boolean isAsc = arr[start] < arr[end];
+
         while (start <= end) {
             int mid = start + (end - start) / 2;
 
-            if (arr[mid] == target) return mid;
+            if (arr[mid] == target) {
+                return mid;
+            }
 
-            if (asc) { // ascending order
+            if (isAsc) {
                 if (target < arr[mid]) {
                     end = mid - 1;
                 } else {
                     start = mid + 1;
                 }
-            } else { // descending order
-                if (target < arr[mid]) {
-                    start = mid + 1;
-                } else {
+            } else {
+                if (target > arr[mid]) {
                     end = mid - 1;
+                } else {
+                    start = mid + 1;
                 }
             }
         }
-        return -1; // not found
+        return -1;
     }
 }

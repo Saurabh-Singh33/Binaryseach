@@ -10,13 +10,13 @@ public class RotationCount {
         System.out.println( countRotation(arr3));
     }
 
-    // Step 1: Wrapper function to get rotation count
+    // to get rotation count
     public static int countRotation(int[] arr) {
         int pivot = findPivot(arr);
         return pivot;   // number of rotations = pivot index
     }
 
-    // Step 2: Function to find pivot (smallest element index)
+    //  to find pivot (smallest element index)
     public static int findPivot(int[] arr) {
         int low = 0, high = arr.length - 1;
 
