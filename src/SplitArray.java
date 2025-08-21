@@ -30,7 +30,8 @@ public class SplitArray {
             if (currSum + num > mid) {
                 count++;
                 currSum = num;
-                if (count > k) return false;
+                if (count > k)
+                    return false;
             } else {
                 currSum += num;
             }
