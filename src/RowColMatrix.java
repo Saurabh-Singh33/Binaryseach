@@ -11,21 +11,18 @@ int [][] arr = {
 };
 System.out.println(Arrays.toString(search(arr , 49)));
     }
- static  int [] search(int[][] matrix , int target){
+  static int[] search(int [][] Matrix , int target){
         int r = 0;
-        int c = matrix.length -1;
-
-        while (r < matrix.length && c >= 0){
-            if (matrix[r][c]==target){
-                return new int []{r,c};
+        int c = Matrix.length-1;
+        while(c>=0 && r < Matrix.length ){
+            if(Matrix [r][c] == target){
+                return new int[]{r,c};
             }
-            if (matrix[r][c] < target){
+            if (Matrix[r][c] < target){
                 r++;
-            }
-            else {
-                c--;
-            }
-        }
-        return new int[]{-1, -1};
- }
+        }else{
+            c--;
+      }}
+        return new int[]{-1 ,-1};
+  }
 }
