@@ -66,11 +66,8 @@ static void print3(int n) {
 
 static void print4(int n) {
     System.out.println(n);
-     print5(5);
-}
-
-static void print5(int n) {
-    System.out.println(n);
 
 }
+
+
 }
